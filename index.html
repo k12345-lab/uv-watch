@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UV Watch Singapore</title>
+  <meta name="description" content="Real-time UV index in Singapore from the National Environment Agency.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>UV Watch <span class="muted">Singapore</span></h1>
+      <p class="muted">Real-time UV index from the National Environment Agency</p>
+    </header>
+
+    <section class="card hero" id="hero" aria-live="polite">
+      <p class="label">Current UV index</p>
+      <p class="uv-value" id="uv-value">–</p>
+      <p class="uv-level" id="uv-level">Loading…</p>
+      <p class="uv-advice" id="uv-advice"></p>
+      <p class="muted small" id="uv-time"></p>
+    </section>
+
+    <section class="card">
+      <div class="card-head">
+        <h2>Today, hour by hour</h2>
+        <button type="button" id="refresh-btn">Refresh</button>
+      </div>
+      <div class="chart" id="chart" role="img" aria-label="Hourly UV index for today"></div>
+      <div class="tooltip" id="tooltip" hidden></div>
+      <details>
+        <summary>Show as table</summary>
+        <table>
+          <thead><tr><th>Hour</th><th>UV index</th><th>Level</th></tr></thead>
+          <tbody id="table-body"></tbody>
+        </table>
+      </details>
+    </section>
+
+    <section class="card">
+      <h2>What the levels mean</h2>
+      <ul class="scale" id="scale"></ul>
+    </section>
+
+    <footer class="muted small">
+      <p id="updated"></p>
+      <p>Data: <a href="https://data.gov.sg/datasets/d_1b676cd174a9af4704fdb3f9aa58ff5e/view" target="_blank" rel="noopener">data.gov.sg · NEA Ultraviolet Index</a>. Refreshes every 5 minutes.</p>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

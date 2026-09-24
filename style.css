@@ -1,0 +1,156 @@
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #1a1d23;
+  --muted: #5d6470;
+  --border: #e3e6eb;
+  --grid: #eceef2;
+  --accent: #2563eb;
+
+  /* WHO UV index categories */
+  --uv-low: #3ea72d;
+  --uv-moderate: #e6b800;
+  --uv-high: #f18b00;
+  --uv-very-high: #e53210;
+  --uv-extreme: #8e44ad;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111318;
+    --surface: #1b1e25;
+    --text: #eceef2;
+    --muted: #9aa1ad;
+    --border: #2c313b;
+    --grid: #262a33;
+    --accent: #60a5fa;
+    --uv-low: #4cbb3a;
+    --uv-moderate: #f0c419;
+    --uv-high: #f89a1c;
+    --uv-very-high: #f2553a;
+    --uv-extreme: #b06ad0;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 { margin: 0; font-size: 1.75rem; }
+h2 { margin: 0 0 12px; font-size: 1.1rem; }
+header { margin-bottom: 20px; }
+header p { margin: 4px 0 0; }
+
+.muted { color: var(--muted); font-weight: 400; }
+.small { font-size: 0.85rem; }
+a { color: var(--accent); }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.card-head h2 { margin: 0; }
+
+button {
+  font: inherit;
+  font-size: 0.9rem;
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  cursor: pointer;
+}
+button:hover { border-color: var(--accent); }
+button:disabled { opacity: 0.6; cursor: wait; }
+
+/* Hero */
+.hero { text-align: center; border-top: 6px solid var(--level-color, var(--border)); }
+.hero .label { margin: 0; color: var(--muted); }
+.uv-value {
+  margin: 4px 0;
+  font-size: 5rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.uv-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.uv-level .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--level-color); }
+.uv-advice { margin: 4px auto 8px; max-width: 520px; }
+.error { color: var(--uv-very-high); }
+
+/* Chart */
+.chart { width: 100%; }
+.chart svg { display: block; width: 100%; height: auto; overflow: visible; }
+.chart .grid line { stroke: var(--grid); }
+.chart .axis text,
+.chart text.axis { fill: var(--muted); font-size: 11px; }
+.chart .bar-label { fill: var(--text); font-size: 11px; font-weight: 600; }
+.chart .hit { fill: transparent; cursor: pointer; }
+.chart .bar-group:hover .bar,
+.chart .bar-group:focus .bar { opacity: 0.8; }
+.chart .bar-group:focus { outline: none; }
+.chart .empty { fill: var(--muted); font-size: 13px; }
+
+.tooltip {
+  position: absolute;
+  pointer-events: none;
+  background: var(--text);
+  color: var(--bg);
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transform: translate(-50%, -100%);
+}
+
+details { margin-top: 12px; }
+summary { cursor: pointer; color: var(--muted); font-size: 0.9rem; }
+table { width: 100%; border-collapse: collapse; margin-top: 8px; font-size: 0.9rem; }
+th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); }
+th { color: var(--muted); font-weight: 500; }
+
+/* Scale legend */
+.scale { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.scale li { display: grid; grid-template-columns: 14px 110px 1fr; gap: 10px; align-items: start; }
+.scale .swatch { width: 14px; height: 14px; border-radius: 4px; margin-top: 4px; }
+.scale .name { font-weight: 600; }
+.scale .range { color: var(--muted); font-weight: 400; font-size: 0.85rem; display: block; }
+
+footer p { margin: 4px 0; }
+
+@media (max-width: 480px) {
+  .uv-value { font-size: 4rem; }
+  .scale li { grid-template-columns: 14px 1fr; }
+  .scale li .desc { grid-column: 2; }
+}
