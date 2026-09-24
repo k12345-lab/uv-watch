@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UV Watch Singapore</title>
   <meta name="description" content="Real-time UV index in Singapore from the National Environment Agency.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -43,12 +44,58 @@
       <ul class="scale" id="scale"></ul>
     </section>
 
+    <section class="weather" aria-labelledby="weather-title">
+      <div class="section-head">
+        <h2 id="weather-title">Weather across Singapore</h2>
+        <p class="muted small" id="weather-time"></p>
+      </div>
+
+      <div class="stat-grid">
+        <article class="card stat" id="stat-temperature">
+          <p class="label">Temperature</p>
+          <p class="stat-value">–</p>
+          <p class="stat-sub muted small"></p>
+        </article>
+        <article class="card stat" id="stat-humidity">
+          <p class="label">Humidity</p>
+          <p class="stat-value">–</p>
+          <p class="stat-sub muted small"></p>
+        </article>
+        <article class="card stat" id="stat-rainfall">
+          <p class="label">Rainfall</p>
+          <p class="stat-value">–</p>
+          <p class="stat-sub muted small"></p>
+        </article>
+        <article class="card stat" id="stat-wind">
+          <p class="label">Wind</p>
+          <p class="stat-value">–</p>
+          <p class="stat-sub muted small"></p>
+        </article>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <h2>Station readings</h2>
+          <div class="toggle" role="group" aria-label="Choose what the map shows" id="map-toggle">
+            <button type="button" data-layer="temperature" aria-pressed="true">Temperature</button>
+            <button type="button" data-layer="humidity" aria-pressed="false">Humidity</button>
+            <button type="button" data-layer="rainfall" aria-pressed="false">Rainfall</button>
+            <button type="button" data-layer="wind" aria-pressed="false">Wind</button>
+          </div>
+        </div>
+        <div class="map" id="map" aria-label="Map of weather station readings in Singapore"></div>
+        <p class="muted small map-note" id="map-note"></p>
+      </div>
+    </section>
+
     <footer class="muted small">
       <p id="updated"></p>
-      <p>Data: <a href="https://data.gov.sg/datasets/d_1b676cd174a9af4704fdb3f9aa58ff5e/view" target="_blank" rel="noopener">data.gov.sg · NEA Ultraviolet Index</a>. Refreshes every 5 minutes.</p>
+      <p>Data: <a href="https://data.gov.sg/datasets/d_1b676cd174a9af4704fdb3f9aa58ff5e/view" target="_blank" rel="noopener">data.gov.sg · NEA Ultraviolet Index</a> and <a href="https://data.gov.sg/collections/1459/view" target="_blank" rel="noopener">NEA Realtime Weather Readings</a>. Refreshes every 5 minutes.</p>
     </footer>
   </main>
 
+  <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="script.js"></script>
+  <script src="weather.js"></script>
 </body>
 </html>
