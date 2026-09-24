@@ -83,7 +83,11 @@
             <button type="button" data-layer="wind" aria-pressed="false">Wind</button>
           </div>
         </div>
-        <div class="map" id="map" aria-label="Map of weather station readings in Singapore"></div>
+        <div class="map-wrap">
+          <div class="map" id="map" aria-label="Map of weather station readings in Singapore"></div>
+          <div class="map-banner" id="map-banner" hidden></div>
+        </div>
+        <ul class="rain-legend" id="rain-legend" aria-label="Rainfall legend" hidden></ul>
         <p class="muted small map-note" id="map-note"></p>
       </div>
     </section>
